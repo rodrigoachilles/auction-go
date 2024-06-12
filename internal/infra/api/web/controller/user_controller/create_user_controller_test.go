@@ -21,7 +21,7 @@ type MockUserUseCase struct {
 func (m *MockUserUseCase) CreateUser(ctx context.Context, userInput user_usecase.UserInputDTO) (*user_usecase.UserOutputDTO, *internal_error.InternalError) {
 	args := m.Called(ctx, userInput)
 	if args.Get(0) != nil {
-		return args.Get(0).(*user_usecase.UserOutputDTO), args.Get(1).(*internal_error.InternalError)
+		return args.Get(0).(*user_usecase.UserOutputDTO), nil
 	}
 	return nil, args.Get(0).(*internal_error.InternalError)
 }
@@ -67,7 +67,7 @@ func (suite *UserControllerTestSuite) TestCreateUser_Success() {
 		Name: "User Test",
 	}
 
-	suite.mockUseCase.On("CreateUser", mock.Anything, userInputDTO).Return(userOutputDTO).Once()
+	suite.mockUseCase.On("CreateUser", mock.Anything, userInputDTO).Return(&userOutputDTO, nil).Once()
 
 	w := httptest.NewRecorder()
 	c, _ := gin.CreateTestContext(w)
