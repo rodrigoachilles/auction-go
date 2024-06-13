@@ -5,6 +5,7 @@ import (
 	"github.com/rodrigoachilles/auction-go/configuration/logger"
 	"github.com/rodrigoachilles/auction-go/internal/entity/auction_entity"
 	"github.com/rodrigoachilles/auction-go/internal/entity/bid_entity"
+	"github.com/rodrigoachilles/auction-go/internal/infra/database"
 	"github.com/rodrigoachilles/auction-go/internal/infra/database/auction"
 	"github.com/rodrigoachilles/auction-go/internal/internal_error"
 	"os"
@@ -23,7 +24,7 @@ type BidEntityMongo struct {
 }
 
 type BidRepository struct {
-	Collection            *mongo.Collection
+	Collection            database.CollectionAPI
 	AuctionRepository     *auction.AuctionRepository
 	auctionInterval       time.Duration
 	auctionStatusMap      map[string]auction_entity.AuctionStatus

@@ -4,6 +4,7 @@ import (
 	"context"
 	"github.com/rodrigoachilles/auction-go/configuration/logger"
 	"github.com/rodrigoachilles/auction-go/internal/entity/user_entity"
+	"github.com/rodrigoachilles/auction-go/internal/infra/database"
 	"github.com/rodrigoachilles/auction-go/internal/internal_error"
 
 	"go.mongodb.org/mongo-driver/mongo"
@@ -15,7 +16,7 @@ type UserEntityMongo struct {
 }
 
 type UserRepository struct {
-	Collection *mongo.Collection
+	Collection database.CollectionAPI
 }
 
 func NewUserRepository(database *mongo.Database) *UserRepository {
