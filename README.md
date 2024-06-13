@@ -3,6 +3,8 @@ Translations:
 * [French](README_fr.md)
 * [Portuguese (Brazil)](README_pt_br.md)
 
+---
+
 # 🔨 Basic Auction System (auction-go)
 
 ![Project Logo](assets/auction-logo.png)
