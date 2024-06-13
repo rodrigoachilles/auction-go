@@ -3,6 +3,8 @@ Traductions:
 * [Anglais](README.md)
 * [Portugais (Brésil)](README_pt_br.md)
 
+---
+
 # 🔨 Système de Vente aux Enchères Basique (auction-go)
 
 ![Project Logo](assets/auction-logo.png)
