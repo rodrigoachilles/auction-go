@@ -38,15 +38,17 @@ func main() {
 
 	userController, bidController, auctionController := initDependencies(databaseConnection)
 
-	router.GET("/auction", auctionController.FindAuctions)
-	router.GET("/auction/:auctionId", auctionController.FindAuctionById)
-	router.POST("/auction", auctionController.CreateAuction)
-	router.GET("/auction/winner/:auctionId", auctionController.FindWinningBidByAuctionId)
-	router.POST("/bid", bidController.CreateBid)
-	router.GET("/bid/:auctionId", bidController.FindBidByAuctionId)
-	router.GET("/user", userController.FindUsers)
-	router.GET("/user/:userId", userController.FindUserById)
-	router.POST("/user", userController.CreateUser)
+	router.POST("/users", userController.CreateUser)
+	router.GET("/users", userController.FindUsers)
+	router.GET("/users/:id", userController.FindUserById)
+
+	router.POST("/auctions", auctionController.CreateAuction)
+	router.GET("/auctions", auctionController.FindAuctions)
+	router.GET("/auctions/:id", auctionController.FindAuctionById)
+	router.GET("/auctions/:id/winner", auctionController.FindWinningBidByAuctionId)
+	router.GET("/auctions/:id/bids", bidController.FindBidByAuctionId)
+
+	router.POST("/bids", bidController.CreateBid)
 
 	serverPort := ":8080"
 	logger.Info(fmt.Sprintf("Starting server on port %s ...", serverPort[1:]))

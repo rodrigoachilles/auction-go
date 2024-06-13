@@ -1,23 +1,43 @@
-@auctionId1=0a7d3fe6-6f5e-4af8-9a1c-f7bf70ca0463
-@auctionId2=d806742b-0f52-4fe4-b3bc-aa8f58ce6ccf
-@userId1=9db32183-9d9a-453a-b89f-cbf84af2634e
-@userId2=4a4662bd-97aa-461a-b565-4e6a9cfacf5b
+@auctionId=0a7d3fe6-6f5e-4af8-9a1c-f7bf70ca0463
+@userId=9db32183-9d9a-453a-b89f-cbf84af2634e
 
-### GET /auction
+### GET /users
 
-GET http://localhost:8080/auction?status=0 HTTP/2
+GET http://localhost:8080/users HTTP/2
 Host: localhost:8080
 Content-Type: application/json
 
-### GET /auction/:auctionId
+### GET /users/:userId
 
-GET http://localhost:8080/auction/{{auctionId2}} HTTP/2
+GET http://localhost:8080/users/{{userId}} HTTP/2
 Host: localhost:8080
 Content-Type: application/json
 
-### POST /auction
+### POST /users
 
-POST http://localhost:8080/auction HTTP/2
+POST http://localhost:8080/users HTTP/2
+Host: localhost:8080
+Content-Type: application/json
+
+{
+  "name": "John Doe"
+}
+
+### GET /auctions
+
+GET http://localhost:8080/auctions?status=0 HTTP/2
+Host: localhost:8080
+Content-Type: application/json
+
+### GET /auctions/:auctionId
+
+GET http://localhost:8080/auctions/{{auctionId}} HTTP/2
+Host: localhost:8080
+Content-Type: application/json
+
+### POST /auctions
+
+POST http://localhost:8080/auctions HTTP/2
 Host: localhost:8080
 Content-Type: application/json
 
@@ -28,48 +48,26 @@ Content-Type: application/json
   "condition": 0
 }
 
-### GET /auction/winner/:auctionId
+### GET /auctions/:auctionId/winner
 
-GET http://localhost:8080/auction/winner/{{auctionId2}} HTTP/2
+GET http://localhost:8080/auctions/{{auctionId}}/winner HTTP/2
 Host: localhost:8080
 Content-Type: application/json
 
-### POST /bid
+### POST /bids
 
-POST http://localhost:8080/bid HTTP/2
+POST http://localhost:8080/bids HTTP/2
 Host: localhost:8080
 Content-Type: application/json
 
 {
-  "user_id": "{{userId1}}",
-  "auction_id": "{{auctionId1}}",
+  "user_id": "{{userId}}",
+  "auction_id": "{{auctionId}}",
   "amount": 1.0
 }
 
-### GET /bid/:auctionId
+### GET /auctions/:auctionId/bids
 
-GET http://localhost:8080/bid/{{auctionId2}} HTTP/2
+GET http://localhost:8080/bids/{{auctionId}} HTTP/2
 Host: localhost:8080
 Content-Type: application/json
-
-### GET /user
-
-GET http://localhost:8080/user HTTP/2
-Host: localhost:8080
-Content-Type: application/json
-
-### GET /user/:userId
-
-GET http://localhost:8080/user/{{userId2}} HTTP/2
-Host: localhost:8080
-Content-Type: application/json
-
-### POST /user
-
-POST http://localhost:8080/user HTTP/2
-Host: localhost:8080
-Content-Type: application/json
-
-{
-  "name": "User Test 2"
-}

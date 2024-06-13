@@ -9,7 +9,7 @@ import (
 )
 
 func (u *BidController) FindBidByAuctionId(c *gin.Context) {
-	auctionId := c.Param("auctionId")
+	auctionId := c.Param("id")
 
 	if err := uuid.Validate(auctionId); err != nil {
 		errRest := rest_err.NewBadRequestError("Invalid fields", rest_err.Causes{
