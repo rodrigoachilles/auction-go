@@ -3,6 +3,8 @@ Traduções:
 * [Inglês](README.md)
 * [Francês](README_fr.md)
 
+---
+
 # 🔨 Sistema Básico de Leilão (auction-go)
 
 ![Project Logo](assets/auction-logo.png)
